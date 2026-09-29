@@ -1,0 +1,139 @@
+{
+  "id": "515a50d3",
+  "name": "sample_metric_dsm",
+  "created_at": "2026-09-29T21:26:18.693583",
+  "status": "ready",
+  "progress": 100,
+  "current_step": "Reconstruction completed successfully",
+  "pipeline_steps": [
+    {
+      "id": "upload",
+      "label": "Image Uploaded",
+      "status": "completed",
+      "detail": "File stored successfully"
+    },
+    {
+      "id": "metadata",
+      "label": "Metadata Extracted",
+      "status": "completed",
+      "detail": "Spatial reference: EPSG:32643 (WGS 84 / UTM zone 43N)"
+    },
+    {
+      "id": "preprocess",
+      "label": "Image Preprocessing",
+      "status": "completed",
+      "detail": "512×512 processed"
+    },
+    {
+      "id": "depth",
+      "label": "Depth Estimation",
+      "status": "completed",
+      "detail": "Continuous relative depth map generated"
+    },
+    {
+      "id": "calibration",
+      "label": "Metric Calibration",
+      "status": "completed",
+      "detail": "Uncalibrated relative scale"
+    },
+    {
+      "id": "dsm",
+      "label": "DSM Generation",
+      "status": "completed",
+      "detail": "DSM generated (Span: 0.0–100.0 relative units)"
+    },
+    {
+      "id": "mesh",
+      "label": "3D Mesh Generation",
+      "status": "completed",
+      "detail": "128×128 terrain mesh generated"
+    },
+    {
+      "id": "texture",
+      "label": "Texture Mapping",
+      "status": "completed",
+      "detail": "Original texture projection ready"
+    },
+    {
+      "id": "validation",
+      "label": "Validation Check",
+      "status": "completed",
+      "detail": "Validation unavailable — upload a reference DSM."
+    }
+  ],
+  "reconstruction_mode": "relative",
+  "depth_model": "depth-anything/Depth-Anything-V2-Small-hf",
+  "image_metadata": {
+    "filename": "upload_sample_metric_dsm.tif",
+    "width": 512,
+    "height": 512,
+    "format": "TIFF",
+    "channels": 1,
+    "file_size_bytes": 1049722,
+    "is_georeferenced": true,
+    "crs": "EPSG:32643 (WGS 84 / UTM zone 43N)",
+    "bounds": [
+      75.0,
+      10.85085,
+      75.00468,
+      10.85548
+    ],
+    "pixel_size": [
+      1.0,
+      1.0
+    ],
+    "has_dem": true
+  },
+  "calibration": {
+    "method": "none",
+    "scale_a": 1.0,
+    "offset_b": 0.0,
+    "r_squared": null,
+    "rmse": null,
+    "status": "uncalibrated",
+    "points": [],
+    "message": null
+  },
+  "terrain_stats": {
+    "min_elevation": 0.0,
+    "max_elevation": 100.0,
+    "mean_elevation": 28.94,
+    "min_slope": 0.0,
+    "max_slope": 88.3,
+    "avg_slope": 17.4,
+    "slope_categories": {
+      "flat": 14.5,
+      "low": 6.4,
+      "moderate": 57.0,
+      "steep": 9.5,
+      "very_steep": 12.6
+    },
+    "elevation_transitions": 9,
+    "elevated_structures_detected": true,
+    "potential_inspection_regions": [
+      "South-East quadrant exhibiting prominent gradient (20.3° avg slope)",
+      "Southern lower elevation basin (0.0 relative units)"
+    ],
+    "resolution_m": 1.0,
+    "elevation_unit": "relative units",
+    "is_metric": false
+  },
+  "validation": {
+    "has_reference": false,
+    "reference_name": null,
+    "is_sample_data": false,
+    "rmse": null,
+    "mae": null,
+    "correlation": null,
+    "error_distribution": [],
+    "message": "Validation unavailable — upload a reference DSM."
+  },
+  "measurements": [],
+  "image_url": "/api/projects/515a50d3/image",
+  "depth_map_url": "/api/projects/515a50d3/depth-image",
+  "dsm_url": "/api/projects/515a50d3/dsm-image",
+  "hillshade_url": "/api/projects/515a50d3/hillshade-image",
+  "slope_map_url": "/api/projects/515a50d3/slope-image",
+  "mesh_url": "/api/projects/515a50d3/mesh",
+  "is_demo": false
+}

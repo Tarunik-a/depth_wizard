@@ -1,0 +1,279 @@
+{
+  "id": "demo-urban-terrain",
+  "name": "Urban Terrain Demo",
+  "created_at": "2026-09-29T21:00:04.528579",
+  "status": "ready",
+  "progress": 100,
+  "current_step": "Validation complete",
+  "pipeline_steps": [
+    {
+      "id": "upload",
+      "label": "Image Uploaded",
+      "status": "completed",
+      "detail": "512x512 RGB TIFF"
+    },
+    {
+      "id": "metadata",
+      "label": "Metadata Extracted",
+      "status": "completed",
+      "detail": "CRS EPSG:32643 Detected"
+    },
+    {
+      "id": "preprocess",
+      "label": "Image Preprocessing",
+      "status": "completed",
+      "detail": "Normalized spatial grid"
+    },
+    {
+      "id": "depth",
+      "label": "Depth Estimation",
+      "status": "completed",
+      "detail": "Depth Anything V2 inferred"
+    },
+    {
+      "id": "calibration",
+      "label": "Metric Calibration",
+      "status": "completed",
+      "detail": "Affine fit (4 GCPs)"
+    },
+    {
+      "id": "dsm",
+      "label": "DSM Generation",
+      "status": "completed",
+      "detail": "Digital Surface Model generated"
+    },
+    {
+      "id": "mesh",
+      "label": "3D Mesh Generation",
+      "status": "completed",
+      "detail": "128x128 triangular mesh"
+    },
+    {
+      "id": "texture",
+      "label": "Texture Mapping",
+      "status": "completed",
+      "detail": "RGB orthorectified projection"
+    },
+    {
+      "id": "validation",
+      "label": "Validation Check",
+      "status": "completed",
+      "detail": "LiDAR ground truth RMSE: 0.64m (r=0.997)"
+    }
+  ],
+  "reconstruction_mode": "metric",
+  "depth_model": "Depth Anything V2",
+  "image_metadata": {
+    "filename": "urban_satellite_reference.tif",
+    "width": 512,
+    "height": 512,
+    "format": "TIFF",
+    "channels": 3,
+    "file_size_bytes": 2498,
+    "is_georeferenced": true,
+    "crs": "EPSG:32643 (UTM Zone 43N)",
+    "bounds": [
+      76.952,
+      11.012,
+      76.958,
+      11.018
+    ],
+    "pixel_size": [
+      0.25,
+      0.25
+    ],
+    "has_dem": true
+  },
+  "calibration": {
+    "method": "gcp",
+    "scale_a": 43.045,
+    "offset_b": 36.86,
+    "r_squared": 0.985,
+    "rmse": 0.32,
+    "status": "calibrated",
+    "points": [
+      {
+        "id": "GCP-01",
+        "pixel_x": 120,
+        "pixel_y": 255,
+        "known_elevation": 42.8,
+        "predicted_elevation": 42.5,
+        "residual": -0.3
+      },
+      {
+        "id": "GCP-02",
+        "pixel_x": 60,
+        "pixel_y": 80,
+        "known_elevation": 72.1,
+        "predicted_elevation": 71.8,
+        "residual": -0.3
+      },
+      {
+        "id": "GCP-03",
+        "pixel_x": 320,
+        "pixel_y": 90,
+        "known_elevation": 54.2,
+        "predicted_elevation": 54.6,
+        "residual": 0.4
+      },
+      {
+        "id": "GCP-04",
+        "pixel_x": 340,
+        "pixel_y": 450,
+        "known_elevation": 66.5,
+        "predicted_elevation": 66.2,
+        "residual": -0.3
+      }
+    ],
+    "message": "Calibrated using 4 GCPs: H = 43.04·D + 36.86m (Fit RMSE: 0.32m)"
+  },
+  "terrain_stats": {
+    "min_elevation": 36.86,
+    "max_elevation": 79.91,
+    "mean_elevation": 50.03,
+    "min_slope": 0.0,
+    "max_slope": 86.2,
+    "avg_slope": 20.4,
+    "slope_categories": {
+      "flat": 0.9,
+      "low": 11.0,
+      "moderate": 44.0,
+      "steep": 37.4,
+      "very_steep": 6.7
+    },
+    "elevation_transitions": 9,
+    "elevated_structures_detected": true,
+    "potential_inspection_regions": [
+      "North-West commercial tower perimeter (vertical facade relief)",
+      "Main East-West transportation boulevard corridor",
+      "Southern residential block elevation gradient"
+    ],
+    "resolution_m": 0.25,
+    "elevation_unit": "meters",
+    "is_metric": true
+  },
+  "validation": {
+    "has_reference": true,
+    "reference_name": "DEMO DATASET Ground Truth (LiDAR)",
+    "is_sample_data": true,
+    "rmse": 0.64,
+    "mae": 0.51,
+    "correlation": 0.997,
+    "error_distribution": [
+      {
+        "range": "-2.88 to -2.30m",
+        "bin_center": -2.59,
+        "count": 49,
+        "frequency": 0.02
+      },
+      {
+        "range": "-2.30 to -1.72m",
+        "bin_center": -2.01,
+        "count": 995,
+        "frequency": 0.38
+      },
+      {
+        "range": "-1.72 to -1.13m",
+        "bin_center": -1.43,
+        "count": 9270,
+        "frequency": 3.54
+      },
+      {
+        "range": "-1.13 to -0.55m",
+        "bin_center": -0.84,
+        "count": 40949,
+        "frequency": 15.62
+      },
+      {
+        "range": "-0.55 to 0.03m",
+        "bin_center": -0.26,
+        "count": 84766,
+        "frequency": 32.34
+      },
+      {
+        "range": "0.03 to 0.61m",
+        "bin_center": 0.32,
+        "count": 81622,
+        "frequency": 31.14
+      },
+      {
+        "range": "0.61 to 1.20m",
+        "bin_center": 0.91,
+        "count": 36216,
+        "frequency": 13.82
+      },
+      {
+        "range": "1.20 to 1.78m",
+        "bin_center": 1.49,
+        "count": 7562,
+        "frequency": 2.88
+      },
+      {
+        "range": "1.78 to 2.36m",
+        "bin_center": 2.07,
+        "count": 692,
+        "frequency": 0.26
+      },
+      {
+        "range": "2.36 to 2.95m",
+        "bin_center": 2.65,
+        "count": 23,
+        "frequency": 0.01
+      }
+    ],
+    "message": "[DEMO DATASET] Validation metrics calculated against LiDAR benchmark reference."
+  },
+  "measurements": [
+    {
+      "id": "M-01",
+      "type": "height",
+      "start_point": {
+        "x": 60.0,
+        "y": 80.0,
+        "z": 43.6
+      },
+      "end_point": {
+        "x": 60.0,
+        "y": 80.0,
+        "z": 72.1
+      },
+      "value": 28.5,
+      "unit": "m",
+      "is_metric": true,
+      "details": {
+        "description": "North-West Commercial Tower Height",
+        "base_elev": 43.6,
+        "roof_elev": 72.1
+      },
+      "created_at": "2026-09-29T21:00:04.528483"
+    },
+    {
+      "id": "M-02",
+      "type": "distance",
+      "start_point": {
+        "x": 0.0,
+        "y": 255.0,
+        "z": 43.1
+      },
+      "end_point": {
+        "x": 512.0,
+        "y": 255.0,
+        "z": 40.2
+      },
+      "value": 127.4,
+      "unit": "m",
+      "is_metric": true,
+      "details": {
+        "description": "Main Horizontal Boulevard Cross-Section Span"
+      },
+      "created_at": "2026-09-29T21:00:04.528543"
+    }
+  ],
+  "image_url": "/api/projects/demo-urban-terrain/image",
+  "depth_map_url": "/api/projects/demo-urban-terrain/depth-image",
+  "dsm_url": "/api/projects/demo-urban-terrain/dsm-image",
+  "hillshade_url": "/api/projects/demo-urban-terrain/hillshade-image",
+  "slope_map_url": "/api/projects/demo-urban-terrain/slope-image",
+  "mesh_url": "/api/projects/demo-urban-terrain/mesh",
+  "is_demo": true
+}

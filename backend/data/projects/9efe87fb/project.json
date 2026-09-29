@@ -1,0 +1,192 @@
+{
+  "id": "9efe87fb",
+  "name": "Test_Upload",
+  "created_at": "2026-09-29T20:04:29.488395",
+  "status": "ready",
+  "progress": 100,
+  "current_step": "Reconstruction completed successfully",
+  "pipeline_steps": [
+    {
+      "id": "upload",
+      "label": "Image Uploaded",
+      "status": "completed",
+      "detail": "File stored successfully"
+    },
+    {
+      "id": "metadata",
+      "label": "Metadata Extracted",
+      "status": "completed",
+      "detail": "Spatial reference: Uncalibrated image plane"
+    },
+    {
+      "id": "preprocess",
+      "label": "Image Preprocessing",
+      "status": "completed",
+      "detail": "512×512 processed"
+    },
+    {
+      "id": "depth",
+      "label": "Depth Estimation",
+      "status": "completed",
+      "detail": "Continuous relative depth map generated"
+    },
+    {
+      "id": "calibration",
+      "label": "Metric Calibration",
+      "status": "completed",
+      "detail": "Uncalibrated relative scale"
+    },
+    {
+      "id": "dsm",
+      "label": "DSM Generation",
+      "status": "completed",
+      "detail": "DSM generated (Span: 0.0–100.0 relative units)"
+    },
+    {
+      "id": "mesh",
+      "label": "3D Mesh Generation",
+      "status": "completed",
+      "detail": "128×128 terrain mesh generated"
+    },
+    {
+      "id": "texture",
+      "label": "Texture Mapping",
+      "status": "completed",
+      "detail": "Original texture projection ready"
+    },
+    {
+      "id": "validation",
+      "label": "Validation Check",
+      "status": "completed",
+      "detail": "Validation unavailable — upload a reference DSM."
+    }
+  ],
+  "reconstruction_mode": "metric",
+  "depth_model": "depth-anything/Depth-Anything-V2-Small-hf",
+  "image_metadata": {
+    "filename": "upload_test.png",
+    "width": 512,
+    "height": 512,
+    "format": "PNG",
+    "channels": 3,
+    "file_size_bytes": 2498,
+    "is_georeferenced": false,
+    "crs": null,
+    "bounds": null,
+    "pixel_size": null,
+    "has_dem": false
+  },
+  "calibration": {
+    "method": "dem",
+    "scale_a": 0.6843,
+    "offset_b": 54.76,
+    "r_squared": 0.0005,
+    "rmse": 8.51,
+    "status": "calibrated",
+    "points": [],
+    "message": "Calibrated via DEM raster: H = 0.684·D + 54.76 (Residual RMSE: 8.51m, R²: 0.000)"
+  },
+  "terrain_stats": {
+    "min_elevation": 54.76,
+    "max_elevation": 55.44,
+    "mean_elevation": 54.87,
+    "min_slope": 0.0,
+    "max_slope": 13.2,
+    "avg_slope": 0.6,
+    "slope_categories": {
+      "flat": 95.6,
+      "low": 0.3,
+      "moderate": 4.0,
+      "steep": 0.0,
+      "very_steep": 0.0
+    },
+    "elevation_transitions": 8,
+    "elevated_structures_detected": false,
+    "potential_inspection_regions": [
+      "North-East quadrant exhibiting prominent gradient (0.8° avg slope)",
+      "Northern lower elevation depression (54.8 meters)"
+    ],
+    "resolution_m": null,
+    "elevation_unit": "meters",
+    "is_metric": true
+  },
+  "validation": {
+    "has_reference": true,
+    "reference_name": "Uploaded Reference DEM",
+    "is_sample_data": false,
+    "rmse": 8.66,
+    "mae": 7.5,
+    "correlation": -0.0,
+    "error_distribution": [
+      {
+        "range": "-15.2 to -12.2",
+        "bin_center": -13.71,
+        "count": 25815,
+        "frequency": 9.85
+      },
+      {
+        "range": "-12.2 to -9.1",
+        "bin_center": -10.64,
+        "count": 26974,
+        "frequency": 10.29
+      },
+      {
+        "range": "-9.1 to -6.0",
+        "bin_center": -7.57,
+        "count": 26357,
+        "frequency": 10.05
+      },
+      {
+        "range": "-6.0 to -3.0",
+        "bin_center": -4.51,
+        "count": 26984,
+        "frequency": 10.29
+      },
+      {
+        "range": "-3.0 to 0.1",
+        "bin_center": -1.44,
+        "count": 26549,
+        "frequency": 10.13
+      },
+      {
+        "range": "0.1 to 3.2",
+        "bin_center": 1.62,
+        "count": 26840,
+        "frequency": 10.24
+      },
+      {
+        "range": "3.2 to 6.2",
+        "bin_center": 4.69,
+        "count": 27067,
+        "frequency": 10.33
+      },
+      {
+        "range": "6.2 to 9.3",
+        "bin_center": 7.76,
+        "count": 26736,
+        "frequency": 10.2
+      },
+      {
+        "range": "9.3 to 12.4",
+        "bin_center": 10.82,
+        "count": 26963,
+        "frequency": 10.29
+      },
+      {
+        "range": "12.4 to 15.4",
+        "bin_center": 13.89,
+        "count": 21859,
+        "frequency": 8.34
+      }
+    ],
+    "message": "Validation completed successfully against reference ground truth."
+  },
+  "measurements": [],
+  "image_url": "/api/projects/9efe87fb/image",
+  "depth_map_url": "/api/projects/9efe87fb/depth-image",
+  "dsm_url": "/api/projects/9efe87fb/dsm-image",
+  "hillshade_url": "/api/projects/9efe87fb/hillshade-image",
+  "slope_map_url": "/api/projects/9efe87fb/slope-image",
+  "mesh_url": "/api/projects/9efe87fb/mesh",
+  "is_demo": false
+}
